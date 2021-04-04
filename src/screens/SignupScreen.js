@@ -9,9 +9,9 @@ import Spacer from "../components/Spacer";
 const SignupScreen = ({ navigation }) => {
 
     return <>
-
+        <Spacer />
         <Spacer>
-            <Text h3>Sign Up for Tracker</Text>
+            <Text h3 style={styles.header}>Sign Up for Tracker</Text>
         </Spacer>
 
         <Input label="Email" />
@@ -21,25 +21,28 @@ const SignupScreen = ({ navigation }) => {
         <Spacer>
             <Button title="Sign Up" />
         </Spacer>
-
     </>
 
 };
 
 
+
+
 //we use navigationOptions to return an object which will change the way stack navigator shows this screen
-SignupScreen.navigationOptions = () => {
-    return {
-        headerShown: false,
-    };
-}
+//in order to see changes when modifying header you need to refresh the whole app
+//if we aren't passing any props we can just set navigationOptions as our config.object 
+SignupScreen.navigationOptions = {
+    headerShown: false
+};
 
 
 
 
 
 const styles = StyleSheet.create({
-
+    header: {
+        textAlign: "center"
+    }
 });
 
 
