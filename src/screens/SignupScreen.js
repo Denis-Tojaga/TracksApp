@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 //importing pre-build elements with some style, in the docs you can find more about its props
 import { Button, Text, Input } from "react-native-elements";
@@ -8,20 +8,40 @@ import Spacer from "../components/Spacer";
 
 const SignupScreen = ({ navigation }) => {
 
-    return <>
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+
+
+    return <View style={styles.container}>
+
         <Spacer />
         <Spacer>
-            <Text h3 style={styles.header}>Sign Up for Tracker</Text>
+            <Text h2 style={styles.header}>Sign Up for Tracker</Text>
         </Spacer>
 
-        <Input label="Email" />
+        <Input label="Email"
+            value={email}
+            onChangeText={(newEmail) => setEmail(newEmail)}
+            autoCapitalize="none"
+            autoCorrect={false}
+        />
+
         <Spacer />
-        <Input label="Password" />
+
+        <Input label="Password"
+            value={password}
+            onChangeText={(newPassword) => setPassword(newPassword)}
+            autoCapitalize="none"
+            autoCorrect={false}
+            secureTextEntry={true}
+        />
 
         <Spacer>
             <Button title="Sign Up" />
         </Spacer>
-    </>
+    </View>
 
 };
 
@@ -42,6 +62,11 @@ SignupScreen.navigationOptions = {
 const styles = StyleSheet.create({
     header: {
         textAlign: "center"
+    },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        marginBottom: 200
     }
 });
 
