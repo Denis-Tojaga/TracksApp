@@ -30,7 +30,9 @@ const signup = (dispatch) => {
         try {
 
             const response = await trackerApi.post("/signup", { email, password });
-            console.log(response.data);
+
+            //we set our token from the api to our storage
+            await AsyncStorage.setItem("token", response.data.token);
 
         } catch (error) {
             dispatch({ type: "add_error", payload: "Something went wrong with sign up!" })

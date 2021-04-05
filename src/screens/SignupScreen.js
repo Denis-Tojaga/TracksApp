@@ -9,17 +9,18 @@ import { Context as AuthContext } from "../context/AuthContext";
 
 const SignupScreen = ({ navigation }) => {
 
-    //destructurize the signup method so we can use it on button press
-
     //user can either signup successfully or not,
     //if not we will show an error message
     //if success occured we will take the JWT token and store it on the device
-
 
     //to store information on local device after restarting an app
     //we use ASYNC STORAGE, which has couple of methods for storing data
     //AsyncStorage was removed from RN standard library, so we have to install it
     // npm install npm install @react-native-community/async-storage
+
+
+
+    //destructurize the signup method so we can use it on button press
     const { state, signup } = useContext(AuthContext);
 
     const [email, setEmail] = useState("");
@@ -86,7 +87,8 @@ const styles = StyleSheet.create({
     error: {
         fontSize: 16,
         color: "red",
-        textAlign: "center"
+        textAlign: "center",
+        fontStyle: "italic"
     }
 });
 
