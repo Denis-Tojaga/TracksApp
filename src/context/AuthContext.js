@@ -8,6 +8,9 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
 
+        case "add_error":
+            return { ...state, errorMessage: action.payload };
+
         default:
             return state;
     }
@@ -29,7 +32,7 @@ const signup = (dispatch) => {
             console.log(response.data);
 
         } catch (error) {
-            console.log(error.message);
+            dispatch({ type: "add_error", payload: "Something went wrong with sign up!" })
         }
 
 
@@ -86,4 +89,7 @@ const signout = (dispatch) => {
 //reducer function that is going to somehow change the state
 //all function that are calling that reducer function
 //initial state
-export const { Provider, Context } = createDataContext(authReducer, { signin, signout, signup }, { isSignedIn: false });
+export const { Provider, Context } = createDataContext(
+    authReducer,
+    { signin, signout, signup },
+    { isSignedIn: false, errorMessage: "" });
