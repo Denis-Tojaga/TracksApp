@@ -1,7 +1,7 @@
 import { NavigationActions } from "react-navigation";
 
 
-var navigator;
+let navigator;
 
 
 //this gets called with nav object which we assign to navigator variable
@@ -11,6 +11,11 @@ export const setNavigator = (nav) => {
 
 
 
-export const navigate = (screenName, params) => {
-    navigator.dispatch(NavigationActions.navigate({ screenName: screenName, params: params }));
+
+//we can now import this function anywhere we want to navigate, just need to send it screenName and params for that screen
+export const navigate = (routeName, params) => {
+
+    navigator.dispatch(
+        NavigationActions.navigate({ routeName: routeName, params: params })
+    );
 };

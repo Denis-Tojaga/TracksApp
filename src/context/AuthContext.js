@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import createDataContext from "./createDataContext";
 import trackerApi from "../api/tracker";
+import { navigate } from "../navigationRef";
 
 
 //creating a reducer function
@@ -9,12 +10,10 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
 
-        case "add_error":
-            return { ...state, errorMessage: action.payload };
-
         case "signup":
             return { errorMessage: "", token: action.payload };
-
+        case "add_error":
+            return { ...state, errorMessage: action.payload };
         default:
             return state;
     }
@@ -28,21 +27,22 @@ const authReducer = (state, action) => {
 //defining action functions that will somehow change our state object
 const signup = (dispatch) => {
     return async ({ email, password }) => {
-        //make api req to signup with this email and password
         try {
 
             const response = await trackerApi.post("/signup", { email, password });
 
             //we set our token from the api to our storage
             await AsyncStorage.setItem("token", response.data.token);
+
             //as we got the token that means that user is successfully signed so we change our state value
             //because token is going to determine whether we are signed in or not
             dispatch({ type: "signup", payload: response.data.token });
 
-
-
+            //after we successfully signed we want to navigate to TrackListScreen
+            navigate("TrackList");
 
         } catch (error) {
+            console.log(error.message);
             dispatch({ type: "add_error", payload: "Something went wrong with sign up!" })
         }
     };
