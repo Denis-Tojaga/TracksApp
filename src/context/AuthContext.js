@@ -12,6 +12,9 @@ const authReducer = (state, action) => {
         case "add_error":
             return { ...state, errorMessage: action.payload };
 
+        case "signup":
+            return { errorMessage: "", token: action.payload };
+
         default:
             return state;
     }
@@ -24,7 +27,6 @@ const authReducer = (state, action) => {
 
 //defining action functions that will somehow change our state object
 const signup = (dispatch) => {
-
     return async ({ email, password }) => {
         //make api req to signup with this email and password
         try {
@@ -33,23 +35,21 @@ const signup = (dispatch) => {
 
             //we set our token from the api to our storage
             await AsyncStorage.setItem("token", response.data.token);
+            //as we got the token that means that user is successfully signed so we change our state value
+            //because token is going to determine whether we are signed in or not
+            dispatch({ type: "signup", payload: response.data.token });
+
+
+
 
         } catch (error) {
             dispatch({ type: "add_error", payload: "Something went wrong with sign up!" })
         }
-
-
-
-
-
-
-
-        //if we sign up, modify our state, and say we are authenticated
-
-
-        //if signingup fails, we problably need to reflect error message 
     };
-}
+};
+
+
+
 
 
 
@@ -95,4 +95,4 @@ const signout = (dispatch) => {
 export const { Provider, Context } = createDataContext(
     authReducer,
     { signin, signout, signup },
-    { isSignedIn: false, errorMessage: "" });
+    { token: null, errorMessage: "" });
