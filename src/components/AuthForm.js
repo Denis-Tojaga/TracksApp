@@ -12,8 +12,6 @@ const AuthForm = ({ headerText, errorMessage, buttonTitle, onSubmitFunction }) =
 
     return (
         <>
-            <Spacer />
-
             <Spacer>
                 <Text h2 style={styles.header}>{headerText}</Text>
             </Spacer>
