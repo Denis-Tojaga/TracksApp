@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 //importing pre-build elements with some style, in the docs you can find more about its props
 import { Button, Text, Input } from "react-native-elements";
 //we use spacer component to automatically get some margin around different components
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
+
 
 
 const SignupScreen = ({ navigation }) => {
@@ -57,6 +58,14 @@ const SignupScreen = ({ navigation }) => {
         <Spacer>
             <Button title="Sign Up" onPress={() => signup({ email, password })} />
         </Spacer>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
+            <Spacer>
+                <Text style={styles.link}>Already have an account? Sign in instead</Text>
+            </Spacer>
+        </TouchableOpacity>
+
+
     </View>
 
 };
@@ -89,7 +98,15 @@ const styles = StyleSheet.create({
         color: "red",
         textAlign: "center",
         fontStyle: "italic"
+    },
+    link: {
+        fontSize: 17,
+        fontWeight: "600",
+        color: "rgb(34, 137, 220)",
+        fontStyle: "italic",
+        textAlign: "center"
     }
+
 });
 
 
