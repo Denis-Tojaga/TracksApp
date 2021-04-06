@@ -5,6 +5,7 @@ import { Button, Text, Input } from "react-native-elements";
 //we use spacer component to automatically get some margin around different components
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
+import AuthForm from "../components/AuthForm";
 
 
 
@@ -24,40 +25,23 @@ const SignupScreen = ({ navigation }) => {
     //destructurize the signup method so we can use it on button press
     const { state, signup } = useContext(AuthContext);
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+
 
 
 
     return <View style={styles.container}>
 
-        <Spacer />
-        <Spacer>
-            <Text h2 style={styles.header}>Sign Up for Tracker</Text>
-        </Spacer>
 
-        <Input label="Email"
-            value={email}
-            onChangeText={(newEmail) => setEmail(newEmail)}
-            autoCapitalize="none"
-            autoCorrect={false}
+        <AuthForm
+            headerText="Sign Up for Tracker"
+            errorMessage={state.errorMessage}
+            buttonTitle="Sign Up"
+            //our function is getting called with an object that contains email and password,
+            //then we call it and pass in the object with those properties
+            onSubmitFunction={({ email, password }) => signup({ email, password })}
         />
 
-        <Spacer />
 
-        <Input label="Password"
-            value={password}
-            onChangeText={(newPassword) => setPassword(newPassword)}
-            autoCapitalize="none"
-            autoCorrect={false}
-            secureTextEntry={true}
-        />
-
-        {state.errorMessage != null ? <Text style={styles.error}>{state.errorMessage}</Text> : console.log(state)}
-
-        <Spacer>
-            <Button title="Sign Up" onPress={() => signup({ email, password })} />
-        </Spacer>
 
         <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
             <Spacer>
@@ -85,20 +69,12 @@ SignupScreen.navigationOptions = {
 
 
 const styles = StyleSheet.create({
-    header: {
-        textAlign: "center"
-    },
     container: {
         flex: 1,
         justifyContent: "center",
         marginBottom: 200
     },
-    error: {
-        fontSize: 16,
-        color: "red",
-        textAlign: "center",
-        fontStyle: "italic"
-    },
+
     link: {
         fontSize: 17,
         fontWeight: "600",
