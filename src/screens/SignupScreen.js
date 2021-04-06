@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginBottom: 180,
         marginTop: 50,
-        marginHorizontal: 20,
+        marginHorizontal: 10,
     }
 });
 
