@@ -19,35 +19,31 @@ const SignupScreen = ({ navigation }) => {
     // npm install npm install @react-native-community/async-storage
 
 
-
     //destructurize the signup method so we can use it on button press
     const { state, signup } = useContext(AuthContext);
 
+    return (
+        <View style={styles.container}>
 
+            <AuthForm
+                headerText="Sign Up for Tracker"
+                errorMessage={state.errorMessage}
+                buttonTitle="Sign Up"
+                //our function is getting called with an object that contains email and password,
+                //then we call it and pass in the object with those properties
+                onSubmitFunction={({ email, password }) => signup({ email, password })}
+            />
 
-
-
-    return <View style={styles.container}>
-
-        <AuthForm
-            headerText="Sign Up for Tracker"
-            errorMessage={state.errorMessage}
-            buttonTitle="Sign Up"
-            //our function is getting called with an object that contains email and password,
-            //then we call it and pass in the object with those properties
-            onSubmitFunction={({ email, password }) => signup({ email, password })}
-        />
-
-        <NavLink
-            headerText="Already have an account? Sign in instead"
-            screenName="Signin"
-        />
-
-
-
-    </View>
-
+            <NavLink
+                headerText="Already have an account? Sign in instead"
+                screenName="Signin"
+            />
+        </View>
+    );
 };
+
+
+
 
 
 

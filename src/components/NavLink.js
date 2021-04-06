@@ -9,8 +9,6 @@ import { withNavigation } from "react-navigation";
 
 const NavLink = ({ navigation, headerText, screenName }) => {
 
-    console.log(navigation);
-
     return (
         <TouchableOpacity onPress={() => navigation.navigate(screenName)}>
             <Spacer>
@@ -18,7 +16,6 @@ const NavLink = ({ navigation, headerText, screenName }) => {
             </Spacer>
         </TouchableOpacity>
     );
-
 };
 
 
@@ -29,7 +26,6 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: "600",
         color: "rgb(34, 137, 220)",
-        fontStyle: "italic",
         textAlign: "center"
     }
 });

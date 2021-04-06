@@ -16,6 +16,8 @@ const AuthForm = ({ headerText, errorMessage, buttonTitle, onSubmitFunction }) =
                 <Text h2 style={styles.header}>{headerText}</Text>
             </Spacer>
 
+            <Spacer />
+
             <Input label="Email"
                 value={email}
                 onChangeText={(newEmail) => setEmail(newEmail)}
@@ -44,9 +46,6 @@ const AuthForm = ({ headerText, errorMessage, buttonTitle, onSubmitFunction }) =
             </Spacer>
         </>
     );
-
-
-
 };
 
 
