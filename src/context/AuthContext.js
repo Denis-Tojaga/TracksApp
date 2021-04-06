@@ -34,15 +34,20 @@ const signup = (dispatch) => {
             //we set our token from the api to our storage
             await AsyncStorage.setItem("token", response.data.token);
 
+
+
             //as we got the token that means that user is successfully signed so we change our state value
             //because token is going to determine whether we are signed in or not
             dispatch({ type: "signup", payload: response.data.token });
+
+
 
             //after we successfully signed we want to navigate to TrackListScreen
             navigate("TrackList");
 
         } catch (error) {
-            console.log(error.message);
+
+            //dispatching a function that will show us ErrorMessage
             dispatch({ type: "add_error", payload: "Something went wrong with sign up!" })
         }
     };
