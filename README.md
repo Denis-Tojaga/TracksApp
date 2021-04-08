@@ -1,14 +1,8 @@
 # TracksApp mobile application
 
 
-### Mobile app made in react-native
+### Mobile app using Express.js API and MongoDB, made in react-native
 <br />
-
-#### Technologies used 
-
-### - Express.js API
-### - MongoDB
-### - React-native
 
 - User can <b>signin</b> or <b>signup</b> through a registration form
 - On successful signin process user navigates to home screen where he can have a clear view of all previous tracks created
