@@ -4,7 +4,7 @@
 ### Mobile app using Express.js API and MongoDB, made in react-native
 <br />
 
-### [Express.js TracksApp_API](https://github.com/Denis-Tojaga/TrackApp_API)
+### [TracksApp_API repository](https://github.com/Denis-Tojaga/TrackApp_API)
 
 
 - User can <b>signin</b> or <b>signup</b> through a registration form
