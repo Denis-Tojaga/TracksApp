@@ -16,7 +16,7 @@ const authReducer = (state, action) => {
             return { errorMessage: "", token: action.payload };
         case "add_error":
             return { ...state, errorMessage: action.payload };
-        case "clear_error_message":
+        case "clear_error":
             return { ...state, errorMessage: "" };
         default:
             return state;
@@ -28,13 +28,11 @@ const authReducer = (state, action) => {
 
 //dispatch function that clears out the error message when switching between screens
 
-const clearErrorMessage = (dispatch) => {
-    return () => {
-        console.log("Usao sam u funkciju")
-        dispatch({ type: "clear_error_message" });
-    }
+const clearErrorMessage = (dispatch) => () => {
+    dispatch({
+        type: "clear_error",
+    });
 };
-
 
 
 
@@ -44,19 +42,14 @@ const clearErrorMessage = (dispatch) => {
 const signup = (dispatch) => {
     return async ({ email, password }) => {
         try {
-
             const response = await trackerApi.post("/signup", { email, password });
 
             //we set our token from the api to our storage
             await AsyncStorage.setItem("token", response.data.token);
 
-
-
             //as we got the token that means that user is successfully signed so we change our state value
             //because token is going to determine whether we are signed in or not
             dispatch({ type: "signup", payload: response.data.token });
-
-
 
             //after we successfully signed we want to navigate to TrackListScreen
             navigate("TrackList");

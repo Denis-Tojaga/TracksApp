@@ -29,7 +29,6 @@ const SigninScreen = () => {
                 onWillBlur={clearErrorMessage}
             />
 
-
             <AuthForm
                 headerText="Sign in to Tracker"
                 errorMessage={state.errorMessage}
