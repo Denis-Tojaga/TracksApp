@@ -12,12 +12,14 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 
 
 //import of all screens
+import RespolveAuthScreen from "./src/screens/ResolveAuth";
 import AccountScreen from "./src/screens/AccountScreen";
 import SigninScreen from "./src/screens/SigninScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import TrackCreateScreen from "./src/screens/TrackCreateScreen";
 import TrackDetailScreen from "./src/screens/TrackDetailScreen";
 import TrackListScreen from "./src/screens/TrackListScreen";
+
 
 
 //importing a Provider which will pass data to all child components
@@ -41,6 +43,10 @@ import { setNavigator } from "./src/navigationRef";
 
 //this is a nested router setup
 const switchNavigator = createSwitchNavigator({
+
+  //first screen that will determine to which screen we need to go
+  //if there is a token we go to loginFlow, if not we go to Signup
+  ResolveAuth: RespolveAuthScreen,
 
   loginFlow: createStackNavigator({
     Signup: SignupScreen,
