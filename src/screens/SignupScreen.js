@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
+import { NavigationEvents } from "react-navigation";
 //we use spacer component to automatically get some margin around different components
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
@@ -20,10 +21,13 @@ const SignupScreen = ({ navigation }) => {
 
 
     //destructurize the signup method so we can use it on button press
-    const { state, signup } = useContext(AuthContext);
+    const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
+            <NavigationEvents
+                onWillFocus={clearErrorMessage}
+            />
 
             <AuthForm
                 headerText="Sign Up for Tracker"
