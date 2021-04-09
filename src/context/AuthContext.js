@@ -18,6 +18,7 @@ const authReducer = (state, action) => {
             return { ...state, errorMessage: action.payload };
         case "clear_error":
             return { ...state, errorMessage: "" };
+
         default:
             return state;
     }
@@ -26,13 +27,30 @@ const authReducer = (state, action) => {
 
 
 
-//dispatch function that clears out the error message when switching between screens
+//automatical signin from local storage
+const tryLocalSignin = dispatch => async () => {
+    const token = await AsyncStorage.getItem("token");
 
+    //if token exists dispatch a singin function with that extracted token
+    if (token) {
+        dispatch({ type: "signin", payload: token });
+        navigate("TrackList");
+        console.log("Prosao je if uslov");
+    } else {
+        navigate("loginFlow");
+    }
+
+};
+
+
+
+
+
+//dispatch function that clears out the error message when switching between screens
 const clearErrorMessage = (dispatch) => () => {
     dispatch({
         type: "clear_error",
     });
-    //console.log("POzvana funkcija dispatch")
 };
 
 
@@ -118,5 +136,5 @@ const signout = (dispatch) => {
 //initial state
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signin, signout, signup, clearErrorMessage },
+    { signin, signout, signup, clearErrorMessage, tryLocalSignin },
     { token: null, errorMessage: "" });

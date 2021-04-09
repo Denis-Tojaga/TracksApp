@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { NavigationEvents } from "react-navigation";
 //we use spacer component to automatically get some margin around different components
@@ -21,10 +21,19 @@ const SignupScreen = ({ navigation }) => {
 
 
     //destructurize the signup method so we can use it on button press
-    const { state, signup, clearErrorMessage } = useContext(AuthContext);
+    const { state, signup, clearErrorMessage, tryLocalSignin } = useContext(AuthContext);
+
+
+
+    useEffect(() => {
+        tryLocalSignin();
+    }, []);
+
+
 
     return (
         <View style={styles.container}>
+
             <NavigationEvents
                 onWillFocus={clearErrorMessage}
             />
