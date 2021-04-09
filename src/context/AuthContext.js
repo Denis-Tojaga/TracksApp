@@ -32,6 +32,7 @@ const clearErrorMessage = (dispatch) => () => {
     dispatch({
         type: "clear_error",
     });
+    //console.log("POzvana funkcija dispatch")
 };
 
 

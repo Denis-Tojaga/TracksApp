@@ -26,7 +26,7 @@ const SigninScreen = () => {
         <View style={styles.container}>
 
             <NavigationEvents
-                onWillBlur={clearErrorMessage}
+                onWillFocus={clearErrorMessage}
             />
 
             <AuthForm
