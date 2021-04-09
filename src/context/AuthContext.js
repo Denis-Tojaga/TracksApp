@@ -18,6 +18,8 @@ const authReducer = (state, action) => {
             return { ...state, errorMessage: action.payload };
         case "clear_error":
             return { ...state, errorMessage: "" };
+        case "signout":
+            return { token: null, errorMessage: "" };
 
         default:
             return state;
@@ -35,7 +37,6 @@ const tryLocalSignin = dispatch => async () => {
     if (token) {
         dispatch({ type: "signin", payload: token });
         navigate("TrackList");
-        console.log("Prosao je if uslov");
     } else {
         navigate("loginFlow");
     }
@@ -85,11 +86,7 @@ const signup = (dispatch) => {
 
 
 
-
-
-
-
-
+//if we already have an account we can sign in with it
 const signin = (dispatch) => {
 
     return async ({ email, password }) => {
@@ -114,9 +111,12 @@ const signin = (dispatch) => {
 
 
 
+//if we want to sign out we just need to delete that verification token from async storage
 const signout = (dispatch) => {
-    return () => {
-        //sign out somehow
+    return async () => {
+        await AsyncStorage.removeItem("token");
+        dispatch({ type: "signout" });
+        navigate("Signup");
     }
 };
 
