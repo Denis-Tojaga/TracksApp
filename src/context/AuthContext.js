@@ -16,8 +16,22 @@ const authReducer = (state, action) => {
             return { errorMessage: "", token: action.payload };
         case "add_error":
             return { ...state, errorMessage: action.payload };
+        case "clear_error_message":
+            return { ...state, errorMessage: "" };
         default:
             return state;
+    }
+};
+
+
+
+
+//dispatch function that clears out the error message when switching between screens
+
+const clearErrorMessage = (dispatch) => {
+    return () => {
+        console.log("Usao sam u funkciju")
+        dispatch({ type: "clear_error_message" });
     }
 };
 
@@ -110,5 +124,5 @@ const signout = (dispatch) => {
 //initial state
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signin, signout, signup },
+    { signin, signout, signup, clearErrorMessage },
     { token: null, errorMessage: "" });
