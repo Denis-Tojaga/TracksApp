@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet } from "react-native";
 //in newer version of expo we need to install this maps library
 //to draw lines over the map we need to import this
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline } from "react-native-maps";
 
 
 const Map = () => {
@@ -23,7 +23,6 @@ const Map = () => {
     }
 
 
-    console.log(points);
     //initialRegion says what should we show on the map when it first time shows up
     return (
         <MapView style={styles.map} initialRegion={{ latitude: 37.33233, longitude: -122.03121, latitudeDelta: 0.01, longitudeDelta: 0.01 }}>
