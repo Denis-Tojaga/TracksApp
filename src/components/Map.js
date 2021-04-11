@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 //in newer version of expo we need to install this maps library
-import { MapView } from "react-native-maps";
+import MapView from "react-native-maps";
 
 const Map = () => {
 

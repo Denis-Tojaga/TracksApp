@@ -36,7 +36,7 @@ const tryLocalSignin = dispatch => async () => {
     //if token exists dispatch a singin function with that extracted token
     if (token) {
         dispatch({ type: "signin", payload: token });
-        navigate("TrackList");
+        navigate("TrackCreate");
     } else {
         navigate("loginFlow");
     }
