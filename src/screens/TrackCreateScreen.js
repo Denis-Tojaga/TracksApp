@@ -12,7 +12,7 @@ const TrackCreateScreen = () => {
 
 
     LogBox.ignoreLogs([
-        "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo- constants).",
+        "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).",
     ]);
 
 
@@ -24,10 +24,12 @@ const TrackCreateScreen = () => {
     //helper function to ask for permission
     const startWatching = async () => {
         try {
+
+            //checks if the user allowed the permissions
             const { granted } = await requestPermissionsAsync();
-            if (!granted) {
+            if (!granted)
                 throw new Error('Location permission not granted');
-            }
+
         } catch (err) {
             setErr(err);
         }
