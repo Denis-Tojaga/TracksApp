@@ -4,10 +4,16 @@ import { Text } from "react-native-elements";
 import { SafeAreaView } from "react-navigation";
 import { requestPermissionsAsync } from "expo-location";
 import Map from "../components/Map";
-import { set } from "react-native-reanimated";
+import { LogBox } from "react-native";
+
 
 
 const TrackCreateScreen = () => {
+
+
+    LogBox.ignoreLogs([
+        "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo- constants).",
+    ]);
 
 
     //state variable to track the helper function response
@@ -18,11 +24,12 @@ const TrackCreateScreen = () => {
     //helper function to ask for permission
     const startWatching = async () => {
         try {
-
-            await requestPermissionsAsync();
-
-        } catch (newError) {
-            setErr(newError);
+            const { granted } = await requestPermissionsAsync();
+            if (!granted) {
+                throw new Error('Location permission not granted');
+            }
+        } catch (err) {
+            setErr(err);
         }
     };
 

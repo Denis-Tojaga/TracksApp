@@ -37,8 +37,7 @@ const tryLocalSignin = dispatch => async () => {
     if (token) {
         dispatch({ type: "signin", payload: token });
 
-        //changed to TrackCreate because of the error, valid thing is TrackList
-        navigate("TrackCreate");
+        navigate("TrackList");
     } else {
         navigate("loginFlow");
     }
