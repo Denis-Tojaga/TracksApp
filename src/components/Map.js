@@ -1,8 +1,10 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { Text, StyleSheet, ActivityIndicator } from "react-native";
 //in newer version of expo we need to install this maps library
 //to draw lines over the map we need to import this
 import MapView, { Polyline } from "react-native-maps";
+import { Context as LocationContext } from "../context/LocationContext";
+
 
 
 const Map = () => {
@@ -12,27 +14,26 @@ const Map = () => {
     //it shows a center of our location
 
 
-    //in order to create polyline we need to create the array of points 
-    var points = [];
-
-    for (var i = 0; i < 20; i++) {
-        points.push({
-            latitude: 37.33233 + i * 0.001,
-            longitude: -122.03121 + i * 0.001
-        });
-    }
-
+    //we need the current location from the state
+    const { state: { currentLocation } } = useContext(LocationContext);
 
     //initialRegion says what should we show on the map when it first time shows up
+
+    //if currentLocation is not null we want to show the map to a user(with longitude and latitude from the currentLocation),
+    //currentLocation.coords is where are our longitude and latitude
+    //otherwise we will show activity indicator
+
     return (
-        <MapView style={styles.map} initialRegion={{ latitude: 37.33233, longitude: -122.03121, latitudeDelta: 0.01, longitudeDelta: 0.01 }}>
-            <Polyline
-                coordinates={points}
-                strokeColor="red" // fallback for when `strokeColors` is not supported by the map-provider
-                strokeWidth={3}
-            />
-        </MapView>
+
+        currentLocation ? <MapView
+            style={styles.map}
+            initialRegion={{ ...currentLocation.coords, latitudeDelta: 0.01, longitudeDelta: 0.01 }}
+        >
+        </MapView> : <ActivityIndicator size="large" style={{ marginTop: 200 }} />
     );
+
+
+
 
 
 };
