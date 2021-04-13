@@ -7,10 +7,7 @@ import * as Location from "expo-location";
 const tenMetersWithDegrees = 0.0001;
 
 
-
-
 const getLocation = (increment) => {
-
     return {
         timestamp: 10000000,
         coords: {
@@ -27,9 +24,10 @@ const getLocation = (increment) => {
 
 
 
+
+
+
 var counter = 0;
-
-
 
 //so whenever we import this file in our project
 //once every second we want to emit an event directly in the location library 

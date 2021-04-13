@@ -1,15 +1,15 @@
+import "../_mockLocation";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
 import { SafeAreaView } from "react-navigation";
-import { requestPermissionsAsync } from "expo-location";
+import { requestPermissionsAsync, watchPositionAsync, Accuracy, watchHeadingAsync } from "expo-location";
 import Map from "../components/Map";
 import { LogBox } from "react-native";
 
 
 
 const TrackCreateScreen = () => {
-
 
     //ignoring the logs for warnings
     LogBox.ignoreLogs([
@@ -29,6 +29,24 @@ const TrackCreateScreen = () => {
 
             //checks if the user allowed the permissions
             const { granted } = await requestPermissionsAsync();
+
+            //we need to call the function that is going to track users location
+            //it takes options object as an argument
+            //accuracy.BestForNavigation is the very high accuracy down to meters almost (but it consumes more battery)
+
+            //timeInterval says how often do we want our app to make an update
+
+            //distanceInterval says on how many meters we want our app to make an update
+
+            await watchPositionAsync({
+                accuracy: Accuracy.BestForNavigation,
+                timeInterval: 1000,
+                distanceInterval: 10
+            }, (location) => {
+                console.log(location);
+            });
+
+
             if (!granted)
                 throw new Error('Location permission not granted');
 
@@ -39,12 +57,11 @@ const TrackCreateScreen = () => {
 
 
 
+
     //we want to call this function only the first time a user comes in on this screen
     useEffect(() => {
         startWatching();
     }, []);
-
-
 
 
 
