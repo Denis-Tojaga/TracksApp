@@ -11,6 +11,7 @@ import { LogBox } from "react-native";
 const TrackCreateScreen = () => {
 
 
+    //ignoring the logs for warnings
     LogBox.ignoreLogs([
         "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).",
     ]);
@@ -21,7 +22,8 @@ const TrackCreateScreen = () => {
 
 
 
-    //helper function to ask for permission
+
+    //helper function to ask a user for permission to use location
     const startWatching = async () => {
         try {
 
@@ -43,13 +45,15 @@ const TrackCreateScreen = () => {
     }, []);
 
 
+
+
+
     return (
         <SafeAreaView forceInset={{ top: "always" }}>
             <Text h2>Create a track</Text>
             <Map />
             {err ? <Text>Please enable location services</Text> : null}
         </SafeAreaView>
-
     );
 };
 
