@@ -24,6 +24,7 @@ import TrackListScreen from "./src/screens/TrackListScreen";
 
 //importing a Provider which will pass data to all child components
 import { Provider as AuthProvider } from "./src/context/AuthContext";
+import { Provider as LocationProvider } from "./src/context/LocationContext";
 
 
 //importing navigator function
@@ -75,8 +76,10 @@ const App = createAppContainer(switchNavigator);
 //exporting out custom component which wraps our app with AuthProvider
 export default () => {
   return (
-    <AuthProvider>
-      <App ref={(navigator) => { setNavigator(navigator) }} />
-    </AuthProvider>
+    <LocationProvider>
+      <AuthProvider>
+        <App ref={(navigator) => { setNavigator(navigator) }} />
+      </AuthProvider>
+    </LocationProvider>
   );
 };

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
 import { SafeAreaView } from "react-navigation";
-import { requestPermissionsAsync, watchPositionAsync, Accuracy, watchHeadingAsync } from "expo-location";
+import { requestPermissionsAsync, watchPositionAsync, Accuracy } from "expo-location";
 import Map from "../components/Map";
 import { LogBox } from "react-native";
 
@@ -38,6 +38,9 @@ const TrackCreateScreen = () => {
 
             //distanceInterval says on how many meters we want our app to make an update
 
+
+
+            //takes two params, first one is an options object,second one is an array function that takes our location
             await watchPositionAsync({
                 accuracy: Accuracy.BestForNavigation,
                 timeInterval: 1000,
