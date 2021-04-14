@@ -6,7 +6,6 @@ export default (callbackFunction) => {
     //state variable to track the helper function response
     const [err, setErr] = useState(null);
 
-
     //helper function to ask a user for permission to use location
     const startWatching = async () => {
         try {
@@ -35,15 +34,10 @@ export default (callbackFunction) => {
 
 
 
-
-
     //we want to call this function only the first time a user comes in on this screen
     useEffect(() => {
         startWatching();
     }, []);
-
-
-
 
 
     //we return the array if we want to return more values in the future

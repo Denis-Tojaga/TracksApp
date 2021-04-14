@@ -1,16 +1,25 @@
+//fake location tracking
 import "../_mockLocation";
 import React, { useContext } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, LogBox } from "react-native";
+
+//elements and navigation
 import { Text } from "react-native-elements";
-import { SafeAreaView } from "react-navigation";
+import { SafeAreaView, withNavigationFocus } from "react-navigation";
+
+//location related
 import Map from "../components/Map";
-import { LogBox } from "react-native";
 import { Context as LocationContext } from "../context/LocationContext";
 import useLocation from "../hooks/useLocation";
 
 
 
-const TrackCreateScreen = () => {
+
+
+
+const TrackCreateScreen = ({ isFocused }) => {
+
+    console.log(isFocused);
 
     //ignoring the logs for warnings
     LogBox.ignoreLogs([
@@ -18,6 +27,7 @@ const TrackCreateScreen = () => {
     ]);
 
     const { addLocation } = useContext(LocationContext);
+
 
     //we take the error from the hook we created
     //the hook takes a callback funtion, in this case it will be a function for adding a location
@@ -43,4 +53,4 @@ const styles = StyleSheet.create({
 
 
 
-export default TrackCreateScreen;
+export default withNavigationFocus(TrackCreateScreen);
