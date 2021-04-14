@@ -19,7 +19,6 @@ import useLocation from "../hooks/useLocation";
 
 const TrackCreateScreen = ({ isFocused }) => {
 
-    console.log(isFocused);
 
     //ignoring the logs for warnings
     LogBox.ignoreLogs([
@@ -31,7 +30,7 @@ const TrackCreateScreen = ({ isFocused }) => {
 
     //we take the error from the hook we created
     //the hook takes a callback funtion, in this case it will be a function for adding a location
-    const [err] = useLocation((newLocation) => addLocation(newLocation));
+    const [err] = useLocation(isFocused, (newLocation) => addLocation(newLocation));
 
 
 
