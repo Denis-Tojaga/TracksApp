@@ -13,6 +13,10 @@ import { Context as LocationContext } from "../context/LocationContext";
 import useLocation from "../hooks/useLocation";
 
 
+//importing components
+import TrackForm from "../components/TrackForm";
+
+
 
 
 
@@ -39,6 +43,7 @@ const TrackCreateScreen = ({ isFocused }) => {
             <Text h2>Create a track</Text>
             <Map />
             {err ? <Text>Please enable location services</Text> : null}
+            <TrackForm />
         </SafeAreaView>
     );
 };
