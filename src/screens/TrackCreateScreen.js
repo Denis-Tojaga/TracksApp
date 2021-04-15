@@ -39,8 +39,8 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 
     return (
-        <SafeAreaView forceInset={{ top: "always" }}>
-            <Text h2>Create a track</Text>
+        <SafeAreaView style={styles.screen} forceInset={{ top: "always" }}>
+            <Text style={styles.header} h3>Create a track</Text>
             <Map />
             {err ? <Text>Please enable location services</Text> : null}
             <TrackForm />
@@ -52,6 +52,15 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 
 const styles = StyleSheet.create({
+
+    screen: {
+        margin: 15
+    },
+
+    header: {
+        textAlign: "center",
+        marginBottom: 10
+    }
 
 });
 
