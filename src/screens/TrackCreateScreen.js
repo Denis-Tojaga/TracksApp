@@ -15,6 +15,7 @@ import useLocation from "../hooks/useLocation";
 
 //importing components
 import TrackForm from "../components/TrackForm";
+import { add } from "react-native-reanimated";
 
 
 
@@ -29,12 +30,15 @@ const TrackCreateScreen = ({ isFocused }) => {
         "Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).",
     ]);
 
-    const { addLocation } = useContext(LocationContext);
+    //extract the state so we can access the recording flag and addLocation
+    const { state, addLocation } = useContext(LocationContext);
 
 
     //we take the error from the hook we created
     //the hook takes a callback funtion, in this case it will be a function for adding a location
-    const [err] = useLocation(isFocused, (newLocation) => addLocation(newLocation));
+    const [err] = useLocation(isFocused, (location) => {
+        addLocation(location, state.recording);
+    });
 
 
 

@@ -27,7 +27,7 @@ const locationReducer = (state, action) => {
 
 
 
-const changeName = dispatch = (newName) => {
+const changeName = dispatch => (newName) => {
     dispatch({ type: "change_track_name", payload: newName });
 };
 
