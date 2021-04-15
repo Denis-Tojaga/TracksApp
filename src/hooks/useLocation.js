@@ -47,9 +47,7 @@ export default (trackUser, callbackFunction) => {
         //here we decide if we want to track users location or stop watching
         if (trackUser) {
             startWatching();
-            console.log("Pratim");
         } else {
-            console.log("Prestajem pratiti!");
             subscriber.remove();
             setSubscriber(null);
         }
