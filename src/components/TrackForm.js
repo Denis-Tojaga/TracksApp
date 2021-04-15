@@ -13,6 +13,9 @@ const TrackForm = () => {
     const { state, startRecording, stopRecording, changeName } = useContext(LocationContext);
 
 
+    console.log(state.locations.length);
+
+
     const buttonDisplaying = (recordingFlag) => {
 
         if (recordingFlag) {
