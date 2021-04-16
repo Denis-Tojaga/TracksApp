@@ -1,6 +1,6 @@
 //fake location tracking
 import "../_mockLocation";
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { StyleSheet, LogBox } from "react-native";
 
 //elements and navigation
@@ -34,11 +34,14 @@ const TrackCreateScreen = ({ isFocused }) => {
     const { state, addLocation } = useContext(LocationContext);
 
 
-    //we take the error from the hook we created
-    //the hook takes a callback funtion, in this case it will be a function for adding a location
-    const [err] = useLocation(isFocused, (location) => {
+
+    const callback = useCallback((location) => {
         addLocation(location, state.recording);
-    });
+    }, [state.recording]);
+
+
+    //we only send here the callback function version with changed state.recording 
+    const [err] = useLocation(isFocused, callback);
 
 
 

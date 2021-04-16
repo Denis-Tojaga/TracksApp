@@ -23,6 +23,7 @@ export default (trackUser, callbackFunction) => {
                 timeInterval: 1000,
                 distanceInterval: 10
             }, (location) => {
+                //this calls addLocation from TrackCreateScreen
                 callbackFunction(location);
             });
 
