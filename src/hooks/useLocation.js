@@ -6,7 +6,6 @@ export default (trackUser, callbackFunction) => {
     //state variable to track the helper function response
     const [err, setErr] = useState(null);
 
-    const [subscriber, setSubscriber] = useState(null);
 
 
 
@@ -19,6 +18,10 @@ export default (trackUser, callbackFunction) => {
     useEffect(() => {
 
 
+        var subscriber;
+
+
+
         //helper function to ask a user for permission to use location
         const startWatching = async () => {
             try {
@@ -27,7 +30,7 @@ export default (trackUser, callbackFunction) => {
                 const { granted } = await requestPermissionsAsync();
 
                 //watches location of a user
-                const sub = await watchPositionAsync({
+                subscriber = await watchPositionAsync({
                     accuracy: Accuracy.BestForNavigation,
                     timeInterval: 1000,
                     distanceInterval: 10
@@ -35,9 +38,6 @@ export default (trackUser, callbackFunction) => {
                     //this calls addLocation from TrackCreateScreen
                     callbackFunction(location);
                 });
-
-
-                setSubscriber(sub);
 
 
                 if (!granted)
@@ -61,7 +61,11 @@ export default (trackUser, callbackFunction) => {
         if (trackUser) {
             startWatching();
         } else {
-            setSubscriber(null);
+            //if we dont need to track users location we want to remove subscriber
+            if (subscriber) {
+                subscriber.remove();
+                subscriber = null;
+            }
         }
 
 
@@ -73,14 +77,14 @@ export default (trackUser, callbackFunction) => {
 
 
         //cleanUpFunction that prevents us from tracking users location all the time
-        //after every startWatching we are removing that subscriber 
+        //if we started watching users location we need to remove subscriber to get ready for the new one
         return () => {
             if (subscriber)
                 subscriber.remove();
         };
 
 
-    }, [trackUser, callback]);
+    }, [trackUser, callbackFunction]);
 
 
 
