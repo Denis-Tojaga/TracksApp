@@ -49,9 +49,18 @@ export default (trackUser, callbackFunction) => {
         if (trackUser) {
             startWatching();
         } else {
-            subscriber.remove();
             setSubscriber(null);
         }
+
+
+        //cleanUpFunction that prevents us from tracking users location all the time
+        //after every startWatching we are removing that subscriber 
+        return () => {
+            if (subscriber)
+                subscriber.remove();
+        };
+
+
 
     }, [trackUser]);
 
