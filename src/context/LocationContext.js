@@ -43,7 +43,6 @@ const startRecording = dispatch => () => {
 
 
 
-
 const stopRecording = dispatch => () => {
     dispatch({ type: "stop_recording" });
 };

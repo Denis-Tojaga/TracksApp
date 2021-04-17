@@ -48,12 +48,11 @@ const TrackForm = () => {
 
     return (
         <>
-            <Spacer>
-                <Input
-                    value={state.name}
-                    onChangeText={changeName}
-                    placeholder="Enter name of the track" />
-            </Spacer>
+            <Spacer />
+            <Input
+                value={state.name}
+                onChangeText={changeName}
+                placeholder="Enter name of the track" />
 
             {buttonDisplaying(state.recording)}
 
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#2289dc",
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: 7.5
+        padding: 7.5,
+        marginBottom: 10
     },
 
     text: {
