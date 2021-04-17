@@ -4,6 +4,7 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import Spacer from "./Spacer";
 import { Context as LocationContext } from "../context/LocationContext";
 import { Ionicons } from '@expo/vector-icons';
+import { LocationSubscriber } from "expo-location/build/LocationSubscribers";
 
 
 
@@ -12,8 +13,8 @@ const TrackForm = () => {
 
     const { state, startRecording, stopRecording, changeName } = useContext(LocationContext);
 
-
-    console.log(state.locations.length);
+    var recordingFlag = state.recording;
+    var numberOfLocations = state.locations.length;
 
 
     const buttonDisplaying = (recordingFlag) => {
@@ -34,6 +35,17 @@ const TrackForm = () => {
 
 
 
+    const saveRecordingButton = (recordingFlag, numberOfLocations) => {
+
+        return !recordingFlag && numberOfLocations ?
+            <TouchableOpacity style={styles.touchable} onPress={() => { }}>
+                <Text h4 style={styles.text}>Save track</Text>
+                <Ionicons style={styles.icon} name="checkmark-done-sharp" />
+            </TouchableOpacity> : null;
+    };
+
+
+
     return (
         <>
             <Spacer>
@@ -44,6 +56,8 @@ const TrackForm = () => {
             </Spacer>
 
             {buttonDisplaying(state.recording)}
+
+            {saveRecordingButton(recordingFlag, numberOfLocations)}
 
         </>
     );
