@@ -32,16 +32,18 @@ const TrackCreateScreen = ({ isFocused }) => {
 
     //extract the state so we can access the recording flag and addLocation
     const { state, addLocation } = useContext(LocationContext);
+    const recording = state.recording;
 
 
 
     const callback = useCallback((location) => {
-        addLocation(location, state.recording);
-    }, [state.recording]);
+        addLocation(location, recording);
+    }, [recording]);
 
 
     //we only send here the callback function version with changed state.recording 
-    const [err] = useLocation(isFocused, callback);
+    // in order to record even if the user is not on this screen we are adding || state.recording
+    const [err] = useLocation(isFocused || recording, callback);
 
 
 
