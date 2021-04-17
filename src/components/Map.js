@@ -6,7 +6,9 @@ import { Context as LocationContext } from "../context/LocationContext";
 
 
 const Map = () => {
-    const { state: { currentLocation } } = useContext(LocationContext);
+    const { state: { currentLocation, locations } } = useContext(LocationContext);
+
+
 
     //if currentLocation is not null we want to show the map to a user
     //(with longitude and latitude from the currentLocation),
@@ -24,6 +26,11 @@ const Map = () => {
                     strokeColor="rgba(158,158,255,1.0)"
                     fillColor="rgba(158,158,255,0.3)"
                 />
+
+                {/*we map over each element inside of an array and take out the coords object 
+                and send it back as a return of a function*/}
+
+                <Polyline coordinates={locations.map(locationObject => locationObject.coords)} />
 
             </MapView> : <ActivityIndicator size="large" style={{ marginTop: 200 }} />
     );

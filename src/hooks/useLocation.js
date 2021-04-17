@@ -7,20 +7,11 @@ export default (trackUser, callbackFunction) => {
     const [err, setErr] = useState(null);
 
 
-
-
-
-
-
-
     //we want to call this function only the first time a user comes in on this screen
     //by adding value inside of an array we are telling we might wanna call this function more than once 
     useEffect(() => {
 
-
         var subscriber;
-
-
 
         //helper function to ask a user for permission to use location
         const startWatching = async () => {
@@ -50,13 +41,6 @@ export default (trackUser, callbackFunction) => {
 
 
 
-
-
-
-
-
-
-
         //here we decide if we want to track users location or stop watching
         if (trackUser) {
             startWatching();
@@ -69,13 +53,6 @@ export default (trackUser, callbackFunction) => {
         }
 
 
-
-
-
-
-
-
-
         //cleanUpFunction that prevents us from tracking users location all the time
         //if we started watching users location we need to remove subscriber to get ready for the new one
         return () => {
@@ -83,16 +60,7 @@ export default (trackUser, callbackFunction) => {
                 subscriber.remove();
         };
 
-
     }, [trackUser, callbackFunction]);
-
-
-
-
-
-
-
-
 
 
     //we return the array if we want to return more values in the future
