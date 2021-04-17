@@ -2,16 +2,24 @@ import React, { useContext } from "react";
 import { Input, Button, Text } from "react-native-elements";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import Spacer from "./Spacer";
-import { Context as LocationContext } from "../context/LocationContext";
 import { Ionicons } from '@expo/vector-icons';
-import { LocationSubscriber } from "expo-location/build/LocationSubscribers";
 
+
+import { Context as LocationContext } from "../context/LocationContext";
+import useSaveTrack from "../hooks/useSaveTrack";
 
 
 
 const TrackForm = () => {
 
+    //extracting stuff from hooks and context
     const { state, startRecording, stopRecording, changeName } = useContext(LocationContext);
+    const [saveTrack] = useSaveTrack();
+
+
+    //console.log(state.name);
+
+
 
     var recordingFlag = state.recording;
     var numberOfLocations = state.locations.length;
@@ -34,11 +42,10 @@ const TrackForm = () => {
     };
 
 
-
-    const saveRecordingButton = (recordingFlag, numberOfLocations) => {
+    const saveRecordingButton = (recordingFlag, numberOfLocations, callback) => {
 
         return !recordingFlag && numberOfLocations ?
-            <TouchableOpacity style={styles.touchable} onPress={() => { }}>
+            <TouchableOpacity style={styles.touchable} onPress={() => { callback() }}>
                 <Text h4 style={styles.text}>Save track</Text>
                 <Ionicons style={styles.icon} name="checkmark-done-sharp" />
             </TouchableOpacity> : null;
@@ -56,7 +63,11 @@ const TrackForm = () => {
 
             {buttonDisplaying(state.recording)}
 
-            {saveRecordingButton(recordingFlag, numberOfLocations)}
+            {!recordingFlag && numberOfLocations ?
+                <TouchableOpacity style={styles.touchable} onPress={console.log(state.locations.length)}>
+                    <Text h4 style={styles.text}>Save track</Text>
+                    <Ionicons style={styles.icon} name="checkmark-done-sharp" />
+                </TouchableOpacity> : null}
 
         </>
     );

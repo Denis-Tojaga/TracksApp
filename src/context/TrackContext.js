@@ -28,7 +28,9 @@ const fetchTracks = dispatch => () => {
 
 
 //creates a track and saves it in MongoDB
-const createTrack = dispatch => () => {
+const createTrack = dispatch => (name, locations) => {
+
+    console.log(name);
 
 };
 
