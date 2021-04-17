@@ -16,12 +16,13 @@ export default () => {
     //action funcction for saving from Track Context
     const { createTrack } = useContext(TrackContext);
 
-    //needed parameters that need to be saved from Location State
-    const { name, locations } = useContext(LocationContext);
+    //needed parameters are placed in state, that need to be saved from Location State
+    const { state } = useContext(LocationContext);
+
 
 
     const saveTrack = () => {
-        createTrack(name, locations);
+        createTrack(state.name, state.locations);
     };
 
 

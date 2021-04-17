@@ -42,10 +42,10 @@ const TrackForm = () => {
     };
 
 
-    const saveRecordingButton = (recordingFlag, numberOfLocations, callback) => {
+    const saveRecordingButton = (recordingFlag, numberOfLocations) => {
 
         return !recordingFlag && numberOfLocations ?
-            <TouchableOpacity style={styles.touchable} onPress={() => { callback() }}>
+            <TouchableOpacity style={styles.touchable} onPress={saveTrack}>
                 <Text h4 style={styles.text}>Save track</Text>
                 <Ionicons style={styles.icon} name="checkmark-done-sharp" />
             </TouchableOpacity> : null;
@@ -63,11 +63,7 @@ const TrackForm = () => {
 
             {buttonDisplaying(state.recording)}
 
-            {!recordingFlag && numberOfLocations ?
-                <TouchableOpacity style={styles.touchable} onPress={console.log(state.locations.length)}>
-                    <Text h4 style={styles.text}>Save track</Text>
-                    <Ionicons style={styles.icon} name="checkmark-done-sharp" />
-                </TouchableOpacity> : null}
+            {saveRecordingButton(recordingFlag, numberOfLocations)}
 
         </>
     );
