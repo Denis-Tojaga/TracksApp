@@ -14,7 +14,7 @@ export default () => {
 
     //extracting all data needed to save a track
 
-    //action funcction for saving from Track Context
+    //action function for saving from Track Context
     const { createTrack } = useContext(TrackContext);
 
     //needed parameters are placed in state, that need to be saved from Location State

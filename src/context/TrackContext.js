@@ -7,7 +7,8 @@ const trackReducer = (state, action) => {
 
     switch (action.type) {
 
-
+        case "fetch_tracks":
+            return action.payload;
         default:
             break;
     }
@@ -17,9 +18,11 @@ const trackReducer = (state, action) => {
 
 
 
-//fetches all tracks from database
-const fetchTracks = dispatch => () => {
+//fetches all tracks from an API
+const fetchTracks = dispatch => async () => {
 
+    const response = await trackerAPI.get("/tracks");
+    dispatch({ type: "fetch_tracks", payload: response.data });
 };
 
 
