@@ -2,7 +2,10 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 
-const TrackDetailScreen = () => {
+const TrackDetailScreen = (props) => {
+
+
+    console.log(props);
 
     return <Text style={{ fontSize: 45 }}>TrackDetailScreen!</Text>
 };
