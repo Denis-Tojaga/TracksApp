@@ -28,10 +28,9 @@ const fetchTracks = dispatch => () => {
 
 
 //creates a track and saves it in MongoDB
-const createTrack = dispatch => (name, locations) => {
-
-    //make a post request to an API
-    console.log(name, locations.length);
+const createTrack = dispatch => async (name, locations) => {
+    //making a post request to an API
+    await trackerAPI.post("/tracks", { name, locations });
 };
 
 
