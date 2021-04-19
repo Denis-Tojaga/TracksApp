@@ -5,6 +5,7 @@
 import { useContext } from "react";
 import { Context as TrackContext } from "../context/TrackContext";
 import { Context as LocationContext } from "../context/LocationContext";
+import { navigate } from "../navigationRef";
 
 
 
@@ -17,12 +18,16 @@ export default () => {
     const { createTrack } = useContext(TrackContext);
 
     //needed parameters are placed in state, that need to be saved from Location State
-    const { state } = useContext(LocationContext);
+    const { state, reset } = useContext(LocationContext);
 
 
 
-    const saveTrack = () => {
-        createTrack(state.name, state.locations);
+    const saveTrack = async () => {
+        await createTrack(state.name, state.locations);
+
+        //function for reseting our form to default
+        reset();
+        navigate("TrackList");
     };
 
 

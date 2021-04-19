@@ -19,6 +19,10 @@ const locationReducer = (state, action) => {
             return { ...state, name: action.payload };
 
 
+        case "reset":
+            return { ...state, name: "", locations: [] };
+
+
         default:
             break;
     }
@@ -67,12 +71,20 @@ const addLocation = dispatch => (newLocation, recording) => {
 
 
 
+
+const reset = dispatch => () => {
+    dispatch({ type: "reset" });
+};
+
+
+
+
 //we are again sending some information for our file to create context
 //we send logic function that does the work,
 //action functions that will get called
 //state object with all its props
 export const { Context, Provider } = createDataContext(
     locationReducer,
-    { startRecording, stopRecording, addLocation, changeName },
+    { startRecording, stopRecording, addLocation, changeName, reset },
     { name: "", recording: false, locations: [], currentLocation: null }
 );
