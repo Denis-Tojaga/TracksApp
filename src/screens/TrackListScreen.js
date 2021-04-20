@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
         alignSelf: "flex-start",
         marginRight: 50,
         fontSize: 25,
+        fontFamily: "RalewayLight"
     },
     icon: {
         fontSize: 42,

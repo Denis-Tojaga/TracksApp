@@ -34,6 +34,12 @@ import { setNavigator } from "./src/navigationRef";
 //importing an icon
 import { FontAwesome } from '@expo/vector-icons';
 
+//importing fonts hook
+import { useFonts } from "@use-expo/font";
+import AppLoading from "expo-app-loading";
+
+
+
 
 
 
@@ -41,8 +47,6 @@ const trackListFlow = createStackNavigator({
   TrackList: TrackListScreen,
   TrackDetail: TrackDetailScreen
 });
-
-
 
 trackListFlow.navigationOptions = {
   title: "Tracks",
@@ -86,8 +90,19 @@ const switchNavigator = createSwitchNavigator({
 const App = createAppContainer(switchNavigator);
 
 
+const customFonts = {
+  RalewayLight: require("./assets/fonts/Raleway-Light.ttf")
+};
+
+
 //exporting out custom component which wraps our app with AuthProvider
 export default () => {
+
+  const [isLoaded] = useFonts(customFonts);
+
+  if (!isLoaded)
+    return <AppLoading />
+
   return (
     <TrackProvider>
       <LocationProvider>
