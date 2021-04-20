@@ -91,7 +91,8 @@ const App = createAppContainer(switchNavigator);
 
 
 const customFonts = {
-  RalewayLight: require("./assets/fonts/Raleway-Light.ttf")
+  RalewayLight: require("./assets/fonts/Raleway-Light.ttf"),
+  RalewaySemibold: require("./assets/fonts/Raleway-SemiBold.ttf")
 };
 
 

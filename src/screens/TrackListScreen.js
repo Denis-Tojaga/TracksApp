@@ -56,7 +56,8 @@ TrackListScreen.navigationOptions = {
     headerTitleStyle: {
         flex: 1,
         textAlign: "center",
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: "RalewaySemibold"
     }
 }
 
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     title: {
         alignSelf: "flex-start",
         marginRight: 50,
-        fontSize: 25,
+        fontSize: 28,
         fontFamily: "RalewayLight"
     },
     icon: {

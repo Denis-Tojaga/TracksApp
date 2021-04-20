@@ -1,10 +1,9 @@
 //fake location tracking
 import "../_mockLocation";
 import React, { useContext, useCallback } from "react";
-import { StyleSheet, LogBox } from "react-native";
+import { StyleSheet, LogBox, Text } from "react-native";
 
 //elements and navigation
-import { Text } from "react-native-elements";
 import { SafeAreaView, withNavigationFocus } from "react-navigation";
 
 //location related
@@ -52,7 +51,7 @@ const TrackCreateScreen = ({ isFocused }) => {
 
     return (
         <SafeAreaView style={styles.screen} forceInset={{ top: "always" }}>
-            <Text style={styles.header} h3>Create a track</Text>
+            <Text style={styles.header}>Create a track</Text>
             <Map />
             {err ? <Text>Please enable location services</Text> : null}
             <TrackForm />
@@ -82,6 +81,8 @@ const styles = StyleSheet.create({
 
     header: {
         textAlign: "center",
+        fontSize: 28,
+        fontFamily: "RalewaySemibold",
         marginBottom: 10
     },
 
