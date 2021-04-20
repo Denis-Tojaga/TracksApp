@@ -14,7 +14,6 @@ const TrackListScreen = ({ navigation }) => {
 
     return <>
         <NavigationEvents onWillFocus={() => fetchTracks()} />
-        <Text style={{ fontSize: 45 }}>TrackListScreen!</Text>
         <Spacer />
 
         <FlatList
@@ -33,7 +32,7 @@ const TrackListScreen = ({ navigation }) => {
                                 <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
                                 <Entypo name="location-pin" style={styles.icon} />
                             </ListItem.Content>
-                            <ListItem.Chevron size={40} />
+                            <ListItem.Chevron size={40} color={"black"} />
                         </ListItem>
                     </TouchableOpacity>
                 );
@@ -56,7 +55,8 @@ TrackListScreen.navigationOptions = {
     title: "Tracks",
     headerTitleStyle: {
         flex: 1,
-        textAlign: "center"
+        textAlign: "center",
+        fontSize: 18
     }
 }
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
 
     content: {
         height: 150,
-        backgroundColor: "lightgray",
+        backgroundColor: "rgb(68,131,181)",
         borderRadius: 15,
         flexDirection: "row",
         justifyContent: "space-around",
