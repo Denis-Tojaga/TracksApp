@@ -31,8 +31,23 @@ import { Provider as TrackProvider } from "./src/context/TrackContext";
 //importing navigator function
 import { setNavigator } from "./src/navigationRef";
 
+//importing an icon
+import { FontAwesome } from '@expo/vector-icons';
 
 
+
+
+const trackListFlow = createStackNavigator({
+  TrackList: TrackListScreen,
+  TrackDetail: TrackDetailScreen
+});
+
+
+
+trackListFlow.navigationOptions = {
+  title: "Tracks",
+  tabBarIcon: <FontAwesome name="th-list" size={21} color="black" />
+}
 
 
 
@@ -56,10 +71,7 @@ const switchNavigator = createSwitchNavigator({
   }),
 
   mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetail: TrackDetailScreen
-    }),
+    trackListFlow: trackListFlow,
     TrackCreate: TrackCreateScreen,
     Account: AccountScreen
   })
