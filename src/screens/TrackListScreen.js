@@ -4,6 +4,7 @@ import { ListItem } from "react-native-elements";
 import { NavigationEvents } from "react-navigation";
 import { Context as TrackContext } from "../context/TrackContext";
 import Spacer from "../components/Spacer";
+import { Entypo } from '@expo/vector-icons';
 
 
 
@@ -17,6 +18,9 @@ const TrackListScreen = ({ navigation }) => {
         <Spacer />
 
         <FlatList
+
+            showsVerticalScrollIndicator={false}
+
             data={state}
 
             keyExtractor={(item) => item._id}
@@ -24,19 +28,17 @@ const TrackListScreen = ({ navigation }) => {
             renderItem={({ item }) => {
                 return (
                     <TouchableOpacity onPress={() => navigation.navigate("TrackDetail", { _id: item._id })}>
-                        <ListItem>
-                            <ListItem.Content>
-                                <ListItem.Title>{item.name}</ListItem.Title>
+                        <ListItem style={styles.item}>
+                            <ListItem.Content style={styles.content}>
+                                <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
+                                <Entypo name="location-pin" style={styles.icon} />
                             </ListItem.Content>
-                            <ListItem.Chevron />
+                            <ListItem.Chevron size={40} />
                         </ListItem>
                     </TouchableOpacity>
                 );
             }}
         />
-
-
-
 
 
     </>
@@ -45,7 +47,51 @@ const TrackListScreen = ({ navigation }) => {
 
 
 
+
+//we use headerTitleStyle prop to modify the header 
+
+
+
+TrackListScreen.navigationOptions = {
+    title: "Tracks",
+    headerTitleStyle: {
+        flex: 1,
+        textAlign: "center"
+    }
+}
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
+
+    item: {
+        marginHorizontal: 12,
+        marginVertical: 12,
+    },
+
+    content: {
+        height: 150,
+        backgroundColor: "lightgray",
+        borderRadius: 15,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        paddingVertical: 50,
+        paddingHorizontal: 15
+    },
+
+    title: {
+        alignSelf: "flex-start",
+        marginRight: 50,
+        fontSize: 25,
+    },
+    icon: {
+        fontSize: 42,
+        color: "black",
+    }
 
 });
 
