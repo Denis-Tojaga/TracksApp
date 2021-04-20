@@ -15,7 +15,10 @@ import useLocation from "../hooks/useLocation";
 
 //importing components
 import TrackForm from "../components/TrackForm";
-import { add } from "react-native-reanimated";
+
+
+//importing icon
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -60,6 +63,17 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 
 
+
+TrackCreateScreen.navigationOptions = {
+    title: "Add track",
+    tabBarIcon: <Ionicons name="ios-add" style={{ color: "black", fontSize: 35, fontWeight: "700" }} />
+};
+
+
+
+
+
+
 const styles = StyleSheet.create({
 
     screen: {
@@ -69,7 +83,8 @@ const styles = StyleSheet.create({
     header: {
         textAlign: "center",
         marginBottom: 10
-    }
+    },
+
 
 });
 
