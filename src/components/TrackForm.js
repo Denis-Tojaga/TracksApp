@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Input, Button, Text } from "react-native-elements";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { Input } from "react-native-elements";
+import { TouchableOpacity, StyleSheet, Text } from "react-native";
 import Spacer from "./Spacer";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -29,7 +29,7 @@ const TrackForm = () => {
 
         if (recordingFlag) {
             return <TouchableOpacity style={styles.touchable} onPress={stopRecording}>
-                <Text h4 style={styles.text}>Stop recording</Text>
+                <Text style={styles.text}>Stop recording</Text>
                 <Ionicons style={styles.icon} name="stop-circle" />
             </TouchableOpacity>
 
@@ -46,7 +46,7 @@ const TrackForm = () => {
 
         return !recordingFlag && numberOfLocations ?
             <TouchableOpacity style={styles.touchable} onPress={saveTrack}>
-                <Text h4 style={styles.text}>Save track</Text>
+                <Text style={styles.text}>Save track</Text>
                 <Ionicons style={styles.icon} name="checkmark-done-sharp" />
             </TouchableOpacity> : null;
     };
@@ -81,14 +81,16 @@ const styles = StyleSheet.create({
         backgroundColor: "#2289dc",
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: 7.5,
-        marginBottom: 10
+        padding: 7,
+        marginBottom: 10,
     },
 
     text: {
         alignSelf: "center",
-        marginLeft: 100,
-        color: "white"
+        color: "white",
+        fontFamily: "RalewaySemibold",
+        fontSize: 24,
+        marginLeft: 85
     },
 
     icon: {
