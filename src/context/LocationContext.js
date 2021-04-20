@@ -18,10 +18,8 @@ const locationReducer = (state, action) => {
         case "change_track_name":
             return { ...state, name: action.payload };
 
-
         case "reset":
             return { ...state, name: "", locations: [] };
-
 
         default:
             break;

@@ -16,17 +16,12 @@ const trackReducer = (state, action) => {
 
 
 
-
-
 //fetches all tracks from an API
 const fetchTracks = dispatch => async () => {
 
     const response = await trackerAPI.get("/tracks");
     dispatch({ type: "fetch_tracks", payload: response.data });
 };
-
-
-
 
 
 
