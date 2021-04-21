@@ -21,7 +21,7 @@ const TrackDetailScreen = ({ navigation }) => {
 
     return <>
 
-        <Text style={{ fontSize: 45 }}>{currentTrack.name}</Text>
+        <Text style={styles.trackName}>{currentTrack.name}</Text>
         <MapView style={styles.map}
             initialRegion={{
                 longitudeDelta: 0.01,
@@ -38,9 +38,30 @@ const TrackDetailScreen = ({ navigation }) => {
 
 
 
+TrackDetailScreen.navigationOptions = {
+    title: "Details",
+    headerTitleStyle: {
+        flex: 1,
+        textAlign: "center",
+        fontSize: 18,
+        fontFamily: "RalewaySemibold"
+    }
+}
+
+
+
+
+
+
 const styles = StyleSheet.create({
     map: {
         height: 300
+    },
+
+    trackName: {
+        fontFamily: "RalewayLight",
+        fontSize: 40,
+        fontWeight: "bold"
     }
 
 });

@@ -78,16 +78,18 @@ const styles = StyleSheet.create({
         height: 150,
         backgroundColor: "rgb(68,131,181)",
         borderRadius: 15,
+        borderColor: "black",
+        borderWidth: 1,
         flexDirection: "row",
-        justifyContent: "space-around",
-        paddingVertical: 50,
-        paddingHorizontal: 15
+        justifyContent: "center",
+        paddingHorizontal: 15,
+        paddingTop: 50
     },
 
     title: {
         alignSelf: "flex-start",
-        marginRight: 50,
-        fontSize: 28,
+        marginRight: 45,
+        fontSize: 25,
         fontFamily: "RalewayLight"
     },
     icon: {
