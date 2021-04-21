@@ -92,7 +92,8 @@ const App = createAppContainer(switchNavigator);
 
 const customFonts = {
   RalewayLight: require("./assets/fonts/Raleway-Light.ttf"),
-  RalewaySemibold: require("./assets/fonts/Raleway-SemiBold.ttf")
+  RalewaySemibold: require("./assets/fonts/Raleway-SemiBold.ttf"),
+  RalewayThin: require("./assets/fonts/Raleway-Thin.ttf"),
 };
 
 
@@ -102,7 +103,7 @@ export default () => {
   const [isLoaded] = useFonts(customFonts);
 
   if (!isLoaded)
-    return console.log("Font nije ucitan!")
+    return <AppLoading />
 
   return (
     <TrackProvider>

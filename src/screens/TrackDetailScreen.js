@@ -28,6 +28,8 @@ const TrackDetailScreen = ({ navigation }) => {
 
     var distance = convertFunction(startLat1, startLon1, endLat2, endLon2);
 
+    console.log(distance);
+
 
 
     return <View>
@@ -41,11 +43,15 @@ const TrackDetailScreen = ({ navigation }) => {
                 ...initialCoords
             }}
         >
-            <Polyline coordinates={currentTrack.locations.map(location => location.coords)} />
+            <Polyline coordinates={currentTrack.locations.map(location => location.coords)}
+                strokeColor={"red"}
+                strokeWidth={2}
+            />
         </MapView>
 
+        <Text style={styles.info}>Info</Text>
         <Spacer>
-            <Text>Distance covered: {distance}km</Text>
+            <Text style={styles.distanceInfo}>Distance covered: {distance} km</Text>
         </Spacer>
 
     </View>
@@ -58,7 +64,7 @@ TrackDetailScreen.navigationOptions = {
     title: "Details",
     headerTitleStyle: {
         flex: 1,
-        textAlign: "center",
+        textAlign: "left",
         fontSize: 18,
         fontFamily: "RalewaySemibold"
     }
@@ -71,14 +77,26 @@ TrackDetailScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
     map: {
-        height: 300
+        height: 300,
+        marginHorizontal: 5
     },
 
     trackName: {
         fontFamily: "RalewayLight",
         fontSize: 40,
-        fontWeight: "bold",
         alignSelf: "center"
+    },
+
+    distanceInfo: {
+        fontFamily: "RalewayLight",
+        fontSize: 25,
+        fontWeight: "800",
+    },
+
+    info: {
+        fontSize: 33,
+        fontFamily: "RalewayLight",
+        textAlign: "center"
     }
 
 });

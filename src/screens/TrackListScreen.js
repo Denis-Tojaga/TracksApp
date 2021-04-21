@@ -78,8 +78,6 @@ const styles = StyleSheet.create({
         height: 150,
         backgroundColor: "rgb(68,131,181)",
         borderRadius: 15,
-        borderColor: "black",
-        borderWidth: 1,
         flexDirection: "row",
         justifyContent: "center",
         paddingHorizontal: 15,
