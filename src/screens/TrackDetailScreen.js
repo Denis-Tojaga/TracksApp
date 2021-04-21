@@ -19,7 +19,6 @@ const TrackDetailScreen = ({ navigation }) => {
 
     const initialCoords = currentTrack.locations[0].coords;
 
-
     var lastIndex = currentTrack.locations.length - 1;
 
     var startLat1 = currentTrack.locations[0].coords.latitude;
@@ -27,8 +26,7 @@ const TrackDetailScreen = ({ navigation }) => {
     var endLat2 = currentTrack.locations[lastIndex].coords.latitude;
     var endLon2 = currentTrack.locations[lastIndex].coords.longitude;
 
-
-
+    var distance = convertFunction(startLat1, startLon1, endLat2, endLon2);
 
 
 
@@ -47,7 +45,7 @@ const TrackDetailScreen = ({ navigation }) => {
         </MapView>
 
         <Spacer>
-            <Text>Distance covered: {convertFunction(startLat1, startLon1, endLat2, endLon2)}km</Text>
+            <Text>Distance covered: {distance}km</Text>
         </Spacer>
 
     </View>
