@@ -1,4 +1,4 @@
-# TracksApp mobile application
+# TracksApp 
 
 ### Mobile app using Express.js API and MongoDB, made in react-native
 #### [TracksApp Express.js API repository](https://github.com/Denis-Tojaga/TrackApp_API)
