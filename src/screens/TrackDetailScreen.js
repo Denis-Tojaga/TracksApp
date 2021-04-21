@@ -51,7 +51,7 @@ const TrackDetailScreen = ({ navigation }) => {
 
         <Text style={styles.info}>Info</Text>
         <Spacer>
-            <Text style={styles.distanceInfo}>Distance covered: {distance} km</Text>
+            <Text style={styles.distanceInfo}>Distance covered: <Text style={styles.distanceHighlight}>{distance}km</Text></Text>
         </Spacer>
 
     </View>
@@ -97,6 +97,11 @@ const styles = StyleSheet.create({
         fontSize: 33,
         fontFamily: "RalewayLight",
         textAlign: "center"
+    },
+
+    distanceHighlight: {
+        color: "red",
+        fontWeight: "bold"
     }
 
 });
