@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Context as TrackContext } from "../context/TrackContext";
 import MapView, { Polyline } from "react-native-maps";
+import Spacer from "../components/Spacer";
+import convertFunction from "../components/convertFunction";
 
 
 const TrackDetailScreen = ({ navigation }) => {
@@ -15,13 +17,25 @@ const TrackDetailScreen = ({ navigation }) => {
     //find function iterates withing state, returns bool value if condition is true 
     const currentTrack = state.find(t => t._id == _id);
 
-
-
     const initialCoords = currentTrack.locations[0].coords;
 
-    return <>
 
-        <Text style={styles.trackName}>{currentTrack.name}</Text>
+    var lastIndex = currentTrack.locations.length - 1;
+
+    var startLat1 = currentTrack.locations[0].coords.latitude;
+    var startLon1 = currentTrack.locations[0].coords.longitude;
+    var endLat2 = currentTrack.locations[lastIndex].coords.latitude;
+    var endLon2 = currentTrack.locations[lastIndex].coords.longitude;
+
+
+
+
+
+
+    return <View>
+        <Spacer>
+            <Text style={styles.trackName}>{currentTrack.name}</Text>
+        </Spacer>
         <MapView style={styles.map}
             initialRegion={{
                 longitudeDelta: 0.01,
@@ -32,7 +46,11 @@ const TrackDetailScreen = ({ navigation }) => {
             <Polyline coordinates={currentTrack.locations.map(location => location.coords)} />
         </MapView>
 
-    </>
+        <Spacer>
+            <Text>Distance covered: {convertFunction(startLat1, startLon1, endLat2, endLon2)}km</Text>
+        </Spacer>
+
+    </View>
 };
 
 
@@ -61,7 +79,8 @@ const styles = StyleSheet.create({
     trackName: {
         fontFamily: "RalewayLight",
         fontSize: 40,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        alignSelf: "center"
     }
 
 });

@@ -102,7 +102,7 @@ export default () => {
   const [isLoaded] = useFonts(customFonts);
 
   if (!isLoaded)
-    return <AppLoading />
+    return console.log("Font nije ucitan!")
 
   return (
     <TrackProvider>
