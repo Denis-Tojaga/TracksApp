@@ -3,7 +3,13 @@
 ### Mobile app using Express.js API and MongoDB, made in react-native
 #### [TracksApp Express.js API repository](https://github.com/Denis-Tojaga/TrackApp_API)
 
-## App setup
+## App startup
+
+#### 1) download the repo from github 
+#### 2) go inside that directory in terminal 
+#### 3) run "npm install" to download dependencies 
+#### 4) to start the app run "npm start"
+#### 5) scan the QR code with Camera app on iOS / scan the QR code with Expo Go app on Android / open it on emulator 
 
 ## App description
 - User can <b>signin</b> or <b>signup</b> through a registration form
