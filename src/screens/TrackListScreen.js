@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, LogBox } from "react-native";
 import { ListItem } from "react-native-elements";
 import { NavigationEvents } from "react-navigation";
 import { Context as TrackContext } from "../context/TrackContext";
@@ -8,37 +8,51 @@ import { Entypo } from '@expo/vector-icons';
 
 
 
+
 const TrackListScreen = ({ navigation }) => {
 
     const { state, fetchTracks } = useContext(TrackContext);
+
+
+
+    LogBox.ignoreLogs([
+        "Native splash screen is already hidden. Call this method before rendering any view.",
+    ]);
+
 
     return <>
         <NavigationEvents onWillFocus={() => fetchTracks()} />
         <Spacer />
 
-        <FlatList
+        {
+            state.length == 0 ?
+                <View style={styles.infoContainer}>
+                    <Text style={styles.info}>There are no tracks yet</Text>
+                    <Text style={styles.info}>Please create one!</Text>
+                </View>
+                : <FlatList
 
-            showsVerticalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
 
-            data={state}
+                    data={state}
 
-            keyExtractor={(item) => item._id}
+                    keyExtractor={(item) => item._id}
 
-            renderItem={({ item }) => {
-                return (
-                    <TouchableOpacity onPress={() => navigation.navigate("TrackDetail", { _id: item._id })}>
-                        <ListItem style={styles.item}>
-                            <ListItem.Content style={styles.content}>
-                                <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
-                                <Entypo name="location-pin" style={styles.icon} />
-                            </ListItem.Content>
-                            <ListItem.Chevron size={40} color={"black"} />
-                        </ListItem>
-                    </TouchableOpacity>
-                );
-            }}
-        />
-
+                    renderItem={({ item }) => {
+                        return (
+                            <TouchableOpacity onPress={() => navigation.navigate("TrackDetail", { _id: item._id })}>
+                                <ListItem style={styles.item}>
+                                    <ListItem.Content style={styles.content}>
+                                        <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
+                                        <Entypo name="location-pin" style={styles.icon} />
+                                    </ListItem.Content>
+                                    <ListItem.Chevron size={40} color={"black"} />
+                                </ListItem>
+                            </TouchableOpacity>
+                        );
+                    }}
+                />
+        }
 
     </>
 };
@@ -93,6 +107,20 @@ const styles = StyleSheet.create({
     icon: {
         fontSize: 42,
         color: "black",
+    },
+
+
+    info: {
+        fontFamily: "RalewayLight",
+        fontSize: 30,
+        alignSelf: "center"
+    },
+
+    infoContainer: {
+        flex: 1,
+        justifyContent: "flex-start",
+        padding: 10,
+        marginTop: 25
     }
 
 });
