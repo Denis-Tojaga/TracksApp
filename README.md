@@ -36,11 +36,11 @@
 
 ## Android 
 
-<img src="assets/AppImages/image1.png" width="250" height="450">  <img src="assets/AppImages/image2.png" width="250" height="450">
-<img src="assets/AppImages/image3.png" width="250" height="450">  <img src="assets/AppImages/image4.png" width="250" height="450">    
-<img src="assets/AppImages/image5.png" width="250" height="450">  <img src="assets/AppImages/image6.png" width="250" height="450">    
-<img src="assets/AppImages/image7.png" width="250" height="450">  <img src="assets/AppImages/image8.png" width="250" height="450">    
-<img src="assets/AppImages/image9.png" width="250" height="450">  <img src="assets/AppImages/image10.png" width="250" height="450">    
+<img src="assets/AppImages/image1.png" width="220" height="450">  <img src="assets/AppImages/image2.png" width="220" height="450">
+<img src="assets/AppImages/image3.png" width="220" height="450">  <img src="assets/AppImages/image4.png" width="220" height="450">    
+<img src="assets/AppImages/image5.png" width="220" height="450">  <img src="assets/AppImages/image6.png" width="220" height="450">    
+<img src="assets/AppImages/image7.png" width="220" height="450">  <img src="assets/AppImages/image8.png" width="220" height="450">    
+<img src="assets/AppImages/image9.png" width="220" height="450">  <img src="assets/AppImages/image10.png" width="220" height="450">    
 <br />
 
 ## iOS
