@@ -16,6 +16,6 @@ export default (lat1, lon1, lat2, lon2) => {
 
 
     var distance = R * c; // Distance in km
-    return Math.round(distance * 1000) / 1000;
+    return Math.round(distance * 100) / 100;
 }
 

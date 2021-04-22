@@ -18,7 +18,7 @@ const AccountScreen = () => {
     const { signout } = useContext(AuthContext);
 
     return (
-        <SafeAreaView forceInset={{ top: "always" }} >
+        <SafeAreaView forceInset={{ top: "always" }} style={styles.area} >
             <Spacer />
             <Text style={styles.header} >Account Info</Text>
             <Spacer>
@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
         fontSize: 38,
         fontFamily: "RalewayLight",
         textAlign: "center"
+    },
+
+    area: {
+        flex: 1,
+        justifyContent: "flex-start",
+        marginTop: 25
     }
 
 });

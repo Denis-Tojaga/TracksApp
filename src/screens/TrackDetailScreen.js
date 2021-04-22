@@ -28,13 +28,11 @@ const TrackDetailScreen = ({ navigation }) => {
 
     var distance = convertFunction(startLat1, startLon1, endLat2, endLon2);
 
-    console.log(distance);
-
-
 
     return <View>
         <Spacer>
             <Text style={styles.trackName}>{currentTrack.name}</Text>
+            <View style={styles.line}></View>
         </Spacer>
         <MapView style={styles.map}
             initialRegion={{
@@ -102,6 +100,12 @@ const styles = StyleSheet.create({
     distanceHighlight: {
         color: "red",
         fontWeight: "bold"
+    },
+
+    line: {
+        borderBottomColor: "black",
+        borderBottomWidth: 1,
+        marginTop: 8
     }
 
 });
