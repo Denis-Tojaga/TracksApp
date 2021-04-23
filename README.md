@@ -48,6 +48,12 @@
 
 ## iOS
 
+<img src="assets/AppImages/slika1.png" width="220" height="450">  <img src="assets/AppImages/slika2.png" width="220" height="450">
+<img src="assets/AppImages/slika3.png" width="220" height="450">  <img src="assets/AppImages/slika4.png" width="220" height="450">    
+<img src="assets/AppImages/slika5.png" width="220" height="450">  <img src="assets/AppImages/slika6.png" width="220" height="450">    
+<img src="assets/AppImages/slika7.png" width="220" height="450">  <img src="assets/AppImages/slika8.png" width="220" height="450">  
+<img src="assets/AppImages/slika9.png" width="220" height="450">  <img src="assets/AppImages/slika10.png" width="220" height="450">   
+
 
 
 
