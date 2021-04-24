@@ -36,22 +36,22 @@
 
 ## Android 
 
-<img src="assets/AppImages/image1.png" width="220" height="450">  <img src="assets/AppImages/image2.png" width="220" height="450">
-<img src="assets/AppImages/image3.png" width="220" height="450">  <img src="assets/AppImages/image4.png" width="220" height="450">    
+<img src="assets/AppImages/image1.png" width="220" height="400">  <img src="assets/AppImages/image2.png" width="220" height="400">
+<img src="assets/AppImages/image3.png" width="220" height="400">  <img src="assets/AppImages/image4.png" width="220" height="400">    
 
-<img src="assets/AppImages/image5.png" width="220" height="450">  <img src="assets/AppImages/image6.png" width="220" height="450">    
-<img src="assets/AppImages/image7.png" width="220" height="450">  <img src="assets/AppImages/image8.png" width="220" height="450">  
+<img src="assets/AppImages/image5.png" width="220" height="400">  <img src="assets/AppImages/image6.png" width="220" height="400">    
+<img src="assets/AppImages/image7.png" width="220" height="400">  <img src="assets/AppImages/image8.png" width="220" height="400">  
 
-<img src="assets/AppImages/image9.png" width="220" height="450">  <img src="assets/AppImages/image10.png" width="220" height="450">   
+<img src="assets/AppImages/image9.png" width="220" height="400">  <img src="assets/AppImages/image10.png" width="220" height="400">   
 
 <br />
 
 ## iOS
 
-<img src="assets/AppImages/slika1.jpg" width="220" height="450">  <img src="assets/AppImages/slika2.jpg" width="220" height="450">
-<img src="assets/AppImages/slika3.jpg" width="220" height="450">  <img src="assets/AppImages/slika4.jpg" width="220" height="450">    
-<img src="assets/AppImages/slika5.jpg" width="220" height="450">  <img src="assets/AppImages/slika6.jpg" width="220" height="450">    
-<img src="assets/AppImages/slika7.jpg" width="220" height="450">  <img src="assets/AppImages/slika8.jpg" width="220" height="450">  
+<img src="assets/AppImages/slika1.jpg" width="220" height="400">  <img src="assets/AppImages/slika2.jpg" width="220" height="400">
+<img src="assets/AppImages/slika3.jpg" width="220" height="400">  <img src="assets/AppImages/slika4.jpg" width="220" height="400">    
+<img src="assets/AppImages/slika5.jpg" width="220" height="400">  <img src="assets/AppImages/slika6.jpg" width="220" height="400">    
+<img src="assets/AppImages/slika7.jpg" width="220" height="400">  <img src="assets/AppImages/slika8.jpg" width="220" height="400">  
 
 
 
